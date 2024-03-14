@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BiCurrentLocation } from "react-icons/bi";
 import { useDispatch } from "react-redux";
+import { setSelectedPlace } from "../store/placeSlice";
 
 const CurrentLocation = () => {
   const dispatch = useDispatch();
@@ -33,8 +34,8 @@ const CurrentLocation = () => {
       const data = await response.json();
       if (data.features && data.features.length > 0) {
         const placeName = data.features[0].place_name;
-        console.log("Place Name:", placeName);
         setCurrentPlace(placeName);
+        dispatch(setSelectedPlace(placeName)); 
       } else {
         console.error("No place name found.");
       }

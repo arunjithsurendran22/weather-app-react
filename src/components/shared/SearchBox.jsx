@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSelectedPlace } from "../store/placeSlice";
 
 const SearchBox = () => {
@@ -12,9 +12,7 @@ const SearchBox = () => {
   const [selectedName, setSelectedName] = useState("");
 
   const dispatch = useDispatch();
-  const selectedPlace = useSelector((state) => state.place.selectedPlace);
 
-  console.log("selectedPlace", selectedPlace);
   useEffect(() => {
     const handleSearch = async () => {
       try {
