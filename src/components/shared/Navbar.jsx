@@ -1,53 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  FaHome,
-  FaSearch,
-  FaShoppingCart,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+import { RiHome2Fill } from "react-icons/ri";
 import { VscSignIn } from "react-icons/vsc";
 import { SiGnuprivacyguard } from "react-icons/si";
-import { FaUserTie } from "react-icons/fa";
+import { FaUserTie, FaTimes, FaBars } from "react-icons/fa";
+import { FaMapMarked } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { key: "home", label: "Home", path: "/", icon: <FaHome /> },
-    // { key: "search", label: "Search", path: "/search", icon: <FaSearch /> },
-    { key: "cart", label: "Cart", path: "/cart", icon: <FaShoppingCart /> },
-    { key: "login", label: "Login", path: "/login", icon: <VscSignIn /> },
-    { key: "register", label: "Register", path: "/register", icon: <SiGnuprivacyguard /> },
+    { key: "home", label: "Home", path: "/home", icon: <RiHome2Fill /> },
+    { key: "login", label: "Login", path: "/", icon: <VscSignIn /> },
+    {
+      key: "register",
+      label: "Register",
+      path: "/register",
+      icon: <SiGnuprivacyguard />,
+    },
     { key: "profile", label: "Profile", path: "/profile", icon: <FaUserTie /> },
+    {
+      key: "weather",
+      label: "Weather",
+      path: "/weather",
+      icon: <FaMapMarked />,
+    },
   ];
 
   return (
-    <nav className="shadow-md p-1 md:p-4 fixed top-0 left-0 right-0 bg-white z-50">
+    <nav className="shadow-md p-1 md:p-4  left-0 right-0 bg-white "> 
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <span className="text-2xl font-bold text-gray-900 flex items-center italic">
-            <Link to="/">
-              <img
-                src="https://i.pinimg.com/originals/72/7e/f7/727ef7286f28b289fd1188eefdd2b626.jpg"
-                alt="Logo"
-                className="w-10"
-              />
-            </Link>
-            <h6 className="ml-52 sm:ml-96 md:ml-4 font-thin text-sm md:text-lg">HungryHub</h6>
-          </span>
+          <Link
+            to="/home"
+            className="text-lg font-semibold text-gray-800 flex items-center"
+          >
+            <RiHome2Fill className="mr-2" />
+          </Link>
         </div>
 
-        <div className="hidden md:flex space-x-4">
-          {links.map((link) => (
+        <div className="hidden md:flex space-x-4 ml-auto">
+          {links.slice(1).map((link) => (
             <Link
               key={link.key}
               to={link.path}
               className="flex items-center text-gray-700 hover:text-gray-900 transition duration-300 border px-4 py-2 rounded-full"
             >
               {link.icon}
-              <span className="ml-2 text-shadow">{link.label}</span>
+              <span className="ml-2">{link.label}</span>
             </Link>
           ))}
         </div>
