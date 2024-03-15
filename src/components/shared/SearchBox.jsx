@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedPlace } from "../store/placeSlice";
 import api from "../../authorization/api";
 
@@ -13,6 +13,7 @@ const SearchBox = () => {
   const [selectedName, setSelectedName] = useState("");
 
   const dispatch = useDispatch();
+  const selectedPlace = useSelector((state) => state.place.selectedPlace);
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -33,26 +34,22 @@ const SearchBox = () => {
     }
   }, [searchQuery]);
 
-  const handleSelectResult = (result) => {
+  const handleSelectResult = async (result) => {
     setSearchQuery("");
     setSearchResults([]);
     setSelectedName(result.place_name);
-    addPlaceName();
-    dispatch(setSelectedPlace(result.place_name));
-  };
-
-  const addPlaceName = async () => {
     try {
-      await api.post("/weather/weather-condition/add", { selectedName });
-    } catch (error) {
-      console.log("failed to add place");
-    }
-  };
-  const fetchLocation = async () => {
-    try {
+      // Store selected place to backend
+      await api.post("/weather/weather-condition/add", {
+        location: result.place_name,
+      });
+      // Fetch data from backend to update Redux store
       const response = await api.get("/weather/weather-condition/get");
+      console.log(response.data);
+      const location = response.data.location; 
+      dispatch(setSelectedPlace(location));
     } catch (error) {
-      console.log("failed to add place");
+      console.error("Error storing or fetching data:", error);
     }
   };
 
