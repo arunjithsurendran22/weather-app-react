@@ -4,12 +4,12 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { WiHumidity } from "react-icons/wi";
-import { SiCodeclimate } from "react-icons/si";
-import { MdVisibilityOff } from "react-icons/md";
-import { LuThermometerSun } from "react-icons/lu";
+import { WiSunrise, WiSunset } from "react-icons/wi";
+import { FaMoon } from "react-icons/fa";
+import { IoMoon } from "react-icons/io5";
+import "./style.css";
 
-const ForeCastWeather = () => {
+const ForecastWeatherHours = () => {
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const [forecastData, setForecastData] = useState(null);
@@ -21,6 +21,7 @@ const ForeCastWeather = () => {
           `http://api.weatherapi.com/v1/forecast.json?key=${APIkey}&q=${selectedPlace}&days=10&aqi=no&alerts=no`
         );
         setForecastData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log("Failed to fetch forecast weather data:", error);
       }
@@ -36,7 +37,7 @@ const ForeCastWeather = () => {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow:5,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -86,35 +87,40 @@ const ForeCastWeather = () => {
   };
 
   return (
-    <div className="md:w-2/4 mx-auto mt-10">
+    <div className="w-full md:w-2/4 mx-auto mt-10">
       {forecastData && (
         <Slider {...settings} className="gap-2">
-          {forecastData.forecast.forecastday.map((day) => (
+          {forecastData.forecast.forecastday.map((dayData) => (
             <div
-              key={day.date_epoch}
+              key={dayData.date_epoch}
               className="bg-gray-800 bg-opacity-25 rounded-lg p-4 shadow-lg flex flex-col justify-center items-center"
             >
-              <h3 className="text-xs italic dateTime">{day.date}</h3>
-              <img
-                src={day.day.condition.icon}
-                alt=""
-                className="w-12 h-12 mx-auto mb-2"
-              />
-              <div className="flex items-center">
-                <SiCodeclimate className="mr-2 text-xl" />
-                <p className="text-sm fondSize">{day.day.condition.text}</p>
-              </div>
-              <div className="flex items-center">
-                <WiHumidity className="mr-2 text-xl" />
-                <p className="text-sm fondSize">{day.day.avghumidity}</p>
-              </div>
-              <div className="flex items-center">
-                <MdVisibilityOff className="mr-2 text-xl" />
-                <p className="text-sm fondSize">{day.day.avgvis_km} km</p>
-              </div>
-              <div className="flex items-center">
-                <LuThermometerSun className="mr-2 text-xl" />
-                <p className="text-sm fondSize">UV: {day.day.uv}</p>
+              <h3 className="text-xs italic dateTime">{dayData.date}</h3>
+              <div className="flex flex-col">
+                <div className="flex items-center">
+                  <WiSunrise className="mr-2 text-lg text-yellow-400" />
+                  <p className="text-xs md:text-sm fondSize">
+                    {dayData.astro.sunrise}
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <WiSunset className="mr-2 text-lg text-orange-400" />
+                  <p className="text-xs md:text-sm fondSize">
+                    {dayData.astro.sunset}
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <FaMoon className="mr-2 text-lg text-gray-400" />
+                  <p className="text-xs md:text-sm fondSize">
+                    {dayData.astro.moonrise}
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <IoMoon className="mr-2 text-lg text-black " />
+                  <p className="text-xs md:text-sm fondSize ">
+                    {dayData.astro.moonset}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
@@ -124,4 +130,4 @@ const ForeCastWeather = () => {
   );
 };
 
-export default ForeCastWeather;
+export default ForecastWeatherHours;

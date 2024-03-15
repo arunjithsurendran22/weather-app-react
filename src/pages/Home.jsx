@@ -4,6 +4,7 @@ import CurrentLocation from "../components/shared/CurrentLocation";
 import ForeCastWeather from "../components/shared/ForeCastWeather";
 import CurrentWeather from "../components/shared/CurrentWeather";
 import ForecastWeatherHours from "../components/shared/ForecastWeatherHours";
+import Astro from "../components/shared/Astro";
 
 const Home = () => {
   return (
@@ -11,9 +12,10 @@ const Home = () => {
       <SearchBox />
       <ShowPlace />
       <CurrentLocation />
-      <CurrentWeather/>
+      <CurrentWeather />
       <ForeCastWeather />
-      <ForecastWeatherHours/>
+      <ForecastWeatherHours />
+      <Astro />
     </div>
   );
 };

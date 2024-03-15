@@ -1,0 +1,10 @@
+
+
+@media (max-width: 767px) {
+    .fondSize{
+        font-size: 10px;
+    }
+    .dateTime{
+        font-size: 10px;
+    }
+  }

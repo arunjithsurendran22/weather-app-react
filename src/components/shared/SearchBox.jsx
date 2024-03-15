@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSelectedPlace } from "../store/placeSlice";
+import api from "../../authorization/api";
 
 const SearchBox = () => {
   const mapBoxAPIKey =
@@ -36,7 +37,23 @@ const SearchBox = () => {
     setSearchQuery("");
     setSearchResults([]);
     setSelectedName(result.place_name);
+    addPlaceName();
     dispatch(setSelectedPlace(result.place_name));
+  };
+
+  const addPlaceName = async () => {
+    try {
+      await api.post("/weather/weather-condition/add", { selectedName });
+    } catch (error) {
+      console.log("failed to add place");
+    }
+  };
+  const fetchLocation = async () => {
+    try {
+      const response = await api.get("/weather/weather-condition/get");
+    } catch (error) {
+      console.log("failed to add place");
+    }
   };
 
   return (
