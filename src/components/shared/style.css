@@ -3,8 +3,21 @@
 @media (max-width: 767px) {
     .fondSize{
         font-size: 10px;
+        
     }
     .dateTime{
         font-size: 10px;
     }
+    .saved-location{
+        font-size: 9px;
+    }
+  }
+
+  .saved-location {
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .saved-location:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Change the background color on hover */
   }

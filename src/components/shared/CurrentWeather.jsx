@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import {
   WiHumidity,
@@ -9,11 +9,14 @@ import {
   WiCloud,
   WiTime4,
 } from "react-icons/wi";
+import api from "../../authorization/api";
+import { setSelectedPlace } from "../store/placeSlice";
 
 const CurrentWeather = () => {
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const [weatherData, setWeatherData] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchCurrentWeather = async () => {
@@ -22,7 +25,6 @@ const CurrentWeather = () => {
           `http://api.weatherapi.com/v1/current.json?key=${APIkey}&q=${selectedPlace}&aqi=no`
         );
         setWeatherData(response.data);
-
       } catch (error) {
         console.log("Failed to fetch current weather data:", error);
       }
@@ -30,8 +32,35 @@ const CurrentWeather = () => {
 
     if (selectedPlace) {
       fetchCurrentWeather();
+      handleAddCurrentLocation()
     }
   }, [selectedPlace]);
+
+  const handleAddCurrentLocation = async () => {
+    try {
+      // Add selected place to backend
+      await api.post("/weather/weather-condition/add", {
+        location: selectedPlace,
+      });
+    } catch (error) {
+      console.log("Failed to add current weather location:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchAddedLocations = async () => {
+      try {
+        // Fetch added locations from backend
+        const response = await api.get("/weather/weather-condition/get");
+        const location = response.data.location;
+        dispatch(setSelectedPlace(location)); // Update Redux store with fetched location
+      } catch (error) {
+        console.log("Failed to fetch added locations:", error);
+      }
+    };
+
+    fetchAddedLocations();
+  }, [dispatch]);
 
   return (
     <div className="max-w-md mx-auto bg-gray-800 text-white shadow-lg rounded-lg overflow-hidden border-2 border-gray-700">
@@ -52,9 +81,7 @@ const CurrentWeather = () => {
                 {weatherData.location.name}, {weatherData.location.region},{" "}
                 {weatherData.location.country}
               </p>
-              <p className="text-xl">
-             {weatherData.current.last_updated}
-              </p>
+              <p className="text-xl">{weatherData.current.last_updated}</p>
             </div>
           </div>
           <div className="mt-6 grid grid-cols-2 gap-4">
