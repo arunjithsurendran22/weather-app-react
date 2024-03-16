@@ -93,7 +93,7 @@ const Astro = () => {
           {forecastData.forecast.forecastday.map((dayData) => (
             <div
               key={dayData.date_epoch}
-              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center mb-10"
+              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center mb-10"
             >
               <h3 className="text-xs italic dateTime text-white">{dayData.date}</h3>
               <div className="flex flex-col">

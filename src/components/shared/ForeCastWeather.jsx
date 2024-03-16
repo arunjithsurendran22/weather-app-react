@@ -92,7 +92,7 @@ const ForeCastWeather = () => {
           {forecastData.forecast.forecastday.map((day) => (
             <div
               key={day.date_epoch}
-              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
+              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
             >
               <h3 className="text-sm italic mb-2 text-gray-100">{day.date}</h3>
               <img

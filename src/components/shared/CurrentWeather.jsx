@@ -65,7 +65,7 @@ const CurrentWeather = () => {
   }, [dispatch]);
 
   return (
-    <div className="max-w-md mx-auto  text-gray-800 rounded-lg overflow-hidden shadow-md p-6 border border-gray-900">
+    <div className="max-w-md mx-auto text-gray-800 rounded-lg overflow-hidden shadow-md p-6  relative bg-customPurple bg-opacity-20 backdrop-filter backdrop-blur-md">
       {weatherData && (
         <div className="flex flex-col items-center justify-center">
           <img
@@ -73,17 +73,17 @@ const CurrentWeather = () => {
             alt={weatherData.current.condition.text}
             className="w-20 h-20 mb-4"
           />
-          <div className="text-4xl font-bold text-gray-500">
+          <div className="text-4xl font-bold text-white">
             {weatherData.current.temp_c}°C
           </div>
-          <div className="text-lg mb-4 text-orange-400">
+          <div className="text-lg mb-4 text-white">
             {weatherData.current.condition.text}
           </div>
-          <div className="mb-4 text-orange-900 text-md">
+          <div className="mb-4 text-white text-md">
             {weatherData.location.name}, {weatherData.location.region},{" "}
             {weatherData.location.country}
           </div>
-          <div className="mb-4 text-orange-800 font-bold">
+          <div className="mb-4 text-white font-bold">
             {weatherData.current.last_updated}
           </div>
           <div className="grid grid-cols-2 gap-4">

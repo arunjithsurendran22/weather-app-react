@@ -102,7 +102,7 @@ const ForecastWeatherHours = () => {
         {filterHoursForToday().map((hourData) => (
           <div
             key={hourData.time_epoch}
-            className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
+            className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
           >
             <h3 className="text-xs italic dateTime text-white">{hourData.time}</h3>
             <img

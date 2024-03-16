@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/api/v1/user",
+  baseURL: "https://weather-app-react-server.vercel.app/api/v1/user",
 });
+//https://weather-app-react-server.vercel.app/
 // http://localhost:3000/api/v1/user
 // https://react-food-delivery-h5oa.onrender.com/api/v1/user
 // Request interceptor for adding the bearer token
