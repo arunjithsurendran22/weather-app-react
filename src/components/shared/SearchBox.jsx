@@ -4,9 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSelectedPlace } from "../store/placeSlice";
 
 const SearchBox = () => {
-  const mapBoxAPIKey =
-    "pk.eyJ1IjoiYXJ1bmppdGhzdXJlbmRyYW4iLCJhIjoiY2x0a2J2OXQ3MHVrbzJqbzE0MW1semZmNCJ9.HvCIQ_P6rIKrSmqe5b3b9A";
-
+  const mapBoxAPIKey = import.meta.env.VITE_MAP_BOX_API_KEY;
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const dispatch = useDispatch();

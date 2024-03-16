@@ -1,5 +1,5 @@
  export const weatherImages = {
-    "Sunny": "https://wallpapercave.com/wp/wp4555644.jpg",
+    "Sunny": "https://getwallpapers.com/wallpaper/full/8/4/d/924696-large-sunny-day-background-1920x1080-for-4k-monitor.jpg",
     "Partly cloudy":"https://wallpaperaccess.com/full/3397089.jpg ",
     "Clear":"http://farm3.staticflickr.com/2505/5702283339_644976b862_o_d.jpg",
     "Cloudy": "https://cdn.wallpapersafari.com/4/53/JCZUF5.jpg",

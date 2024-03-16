@@ -14,7 +14,7 @@ import { setSelectedPlace } from "../store/placeSlice";
 import { setCurrentConditionText } from "../store/weatherSlice";
 
 const CurrentWeather = () => {
-  const APIkey = "fc0f79a144e9415ca3f70223241003";
+  const APIkey = import.meta.env.VITE_REACT_APP_API_KEY
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const [weatherData, setWeatherData] = useState(null);
   const dispatch = useDispatch();
