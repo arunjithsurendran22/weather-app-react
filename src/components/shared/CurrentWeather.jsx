@@ -23,7 +23,7 @@ const CurrentWeather = () => {
     const fetchCurrentWeather = async () => {
       try {
         const response = await axios.get(
-          `http://api.weatherapi.com/v1/current.json?key=${APIkey}&q=${selectedPlace}&aqi=no`
+          `https://api.weatherapi.com/v1/current.json?key=${APIkey}&q=${selectedPlace}&aqi=no`
         );
         setWeatherData(response.data);
         dispatch(setCurrentConditionText(response.data.current.condition.text));
