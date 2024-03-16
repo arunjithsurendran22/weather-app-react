@@ -1,14 +1,17 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaSave, FaCheck } from "react-icons/fa"; // Import icons
 import api from "../../authorization/api";
 import { IoIosAdd } from "react-icons/io";
+import { setPlaceSaved } from "../store/placeSlice";
 
 const SavePlaceButton = () => {
-  const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const [saved, setSaved] = useState(false); // State to track whether place is saved
+  const selectedPlace = useSelector((state) => state.place.selectedPlace);
+  const placeSaved = useSelector((state) => state.place.placeSaved);
+  const dispatch = useDispatch();
 
   const handleSaveLocation = async () => {
     try {
@@ -18,8 +21,10 @@ const SavePlaceButton = () => {
           title: selectedPlace,
         }
       );
+      dispatch(setPlaceSaved(true)); 
+      setSaved(true);
       toast.success(response.data.message);
-      setSaved(true); // Change button icon to saved
+      setSaved(true); 
       console.log(response.data);
     } catch (error) {
       console.error("Error saving selected place:", error);
@@ -27,9 +32,17 @@ const SavePlaceButton = () => {
     }
   };
 
+  useEffect(() => {
+    setSaved(placeSaved); 
+  }, [placeSaved]);
+
+  useEffect(() => {
+    setSaved(false); // Reset saved state when selectedPlace changes
+  }, [selectedPlace]);
+
   return (
     <div>
-      <button onClick={handleSaveLocation}>
+      <button onClick={handleSaveLocation} className="text-white text-2xl">
         {saved ? <FaCheck /> : <IoIosAdd />} 
       </button>
     </div>

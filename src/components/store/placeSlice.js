@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const placeSlice = createSlice({
   name: "place",
   initialState: {
     selectedPlace: "",
+    placeSaved: false, // Add a flag to indicate if place is saved
   },
   reducers: {
     setSelectedPlace: (state, action) => {
-      console.log("Payload:", action.payload);
       state.selectedPlace = action.payload;
     },
+    setPlaceSaved: (state, action) => {
+      state.placeSaved = action.payload;
+    },
   },
-  
 });
 
-// Extract action creators and reducer from the slice
-export const { setSelectedPlace } = placeSlice.actions;
+export const { setSelectedPlace, setPlaceSaved } = placeSlice.actions;
 export default placeSlice.reducer;
