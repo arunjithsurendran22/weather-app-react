@@ -102,73 +102,72 @@ function Register() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-red-500">
-      <div className="w-8/12 max-w-md mx-auto p-8 bg-white rounded-xl shadow-2xl">
-        <div className="mx-auto">
-          <h1 className="font-bold text-3xl text-gray-600 text-center my-8">
-            REGISTER USER
-          </h1>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              ref={inputFocus}
-              type="text"
-              id="name"
-              placeholder="Name"
-              className={`bg-slate-100 p-3 rounded-xl shadow-lg focus:outline-none ${
-                errors.name && "border-red-500"
-              }`}
-              onChange={handleChange}
-            />
-            {errors.name && <span className="text-red-500">{errors.name}</span>}
-            <input
-              type="text"
-              id="phone"
-              placeholder="Phone"
-              className={`bg-slate-100 p-3 rounded-xl shadow-lg focus:outline-none ${
-                errors.phone && "border-red-500"
-              }`}
-              onChange={handleChange}
-            />
-            {errors.phone && (
-              <span className="text-red-500">{errors.phone}</span>
-            )}
-            <input
-              type="email"
-              id="email"
-              placeholder="Email"
-              className={`bg-slate-100 p-3 rounded-xl shadow-lg focus:outline-none ${
-                errors.email && "border-red-500"
-              }`}
-              onChange={handleChange}
-            />
-            {errors.email && (
-              <span className="text-red-500">{errors.email}</span>
-            )}
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              className={`bg-slate-100 p-3 rounded-xl shadow-lg focus:outline-none ${
-                errors.password && "border-red-500"
-              }`}
-              onChange={handleChange}
-            />
-            {errors.password && (
-              <span className="text-red-500">{errors.password}</span>
-            )}
-            <button
-              type="submit"
-              className="bg-gray-800 text-cyan-50 p-3 my-6 rounded-xl shadow-inner text-xl font-bold hover:opacity-90"
-            >
-              REGISTER
-            </button>
-          </form>
-          <div className="text-center">
-            <span className="italic">Already have an account?</span>
-            <Link to="/" className="text-blue-800 ml-1 font-bold">
-              Login
-            </Link>
-          </div>
+    <div className="flex justify-center items-center min-h-screen bg-red-500">
+      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-2xl">
+        <h1 className="md:font-bold md:text-3xl text-gray-600 text-center mb-4">
+          REGISTER USER
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-4 mx-4 md:mx-0">
+          <input
+            ref={inputFocus}
+            type="text"
+            id="name"
+            placeholder="Name"
+            className={`w-full bg-slate-100 p-2 rounded-lg shadow-md focus:outline-none text-sm ${
+              errors.name && "border-red-500"
+            }`}
+            onChange={handleChange}
+          />
+          {errors.name && <span className="text-red-500">{errors.name}</span>}
+          <input
+            type="text"
+            id="phone"
+            placeholder="Phone"
+            className={`w-full bg-slate-100 p-2 rounded-lg shadow-md focus:outline-none text-sm ${
+              errors.phone && "border-red-500"
+            }`}
+            onChange={handleChange}
+          />
+          {errors.phone && <span className="text-red-500">{errors.phone}</span>}
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            className={`w-full bg-slate-100 p-2 rounded-lg shadow-md focus:outline-none text-sm ${
+              errors.email && "border-red-500"
+            }`}
+            onChange={handleChange}
+          />
+          {errors.email && <span className="text-red-500">{errors.email}</span>}
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className={`w-full bg-slate-100 p-2 rounded-lg shadow-md focus:outline-none text-sm ${
+              errors.password && "border-red-500"
+            }`}
+            onChange={handleChange}
+          />
+          {errors.password && (
+            <span className="text-red-500">{errors.password}</span>
+          )}
+          <button
+            type="submit"
+            className="w-full bg-gray-800 text-cyan-50 p-2 rounded-lg shadow-md text-sm font-bold hover:opacity-90"
+          >
+            REGISTER
+          </button>
+        </form>
+        <div className="text-center mt-4">
+          <span className="italic text-xs md:text-sm">
+            Already have an account?
+          </span>{" "}
+          <Link
+            to="/"
+            className="text-blue-800 text-xs md:text-sm  md:font-bold"
+          >
+            Login
+          </Link>
         </div>
       </div>
     </div>

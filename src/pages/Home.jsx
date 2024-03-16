@@ -33,7 +33,6 @@ const Home = () => {
       <SavePlaceButton />
       <SavedLocations />
       <SearchBox />
-      <ShowPlace />
       <CurrentWeather />
       <ForeCastWeather />
       <ForecastWeatherHours />

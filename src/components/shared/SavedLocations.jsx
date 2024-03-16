@@ -78,7 +78,7 @@ const SavedLocations = () => {
               {
                 breakpoint: 480,
                 settings: {
-                  slidesToShow: 1,
+                  slidesToShow: 3,
                   slidesToScroll: 1,
                   arrows: false,
                 },
@@ -89,7 +89,7 @@ const SavedLocations = () => {
             {places.map((place) => (
               <div key={place._id} className="px-1.5 mt-10">
                 <div
-                  className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-md p-4 rounded-md shadow-md relative h-14 w-full flex items-center justify-center cursor-pointer transition duration-300 hover:bg-white hover:bg-opacity-30 hover:backdrop-blur-lg transform hover:scale-105"
+                  className="bg-white   bg-opacity-20 backdrop-filter backdrop-blur-md p-4 rounded-md shadow-md relative h-14 w-full flex items-center justify-center cursor-pointer transition duration-300 hover:bg-white hover:bg-opacity-30 hover:backdrop-blur-lg transform hover:scale-105"
                   onClick={() => handleLocationClick(place)}
                 >
                   <h3 className="text-sm font-semibold mb-0 truncate text-white">

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSelectedPlace } from "../store/placeSlice";
 
 const SearchBox = () => {
-  const mapBoxAPIKey = import.meta.env.VITE_MAP_BOX_API_KEY;
+  const mapBoxAPIKey = "pk.eyJ1IjoiYXJ1bmppdGhzdXJlbmRyYW4iLCJhIjoiY2x0a2J2OXQ3MHVrbzJqbzE0MW1semZmNCJ9.HvCIQ_P6rIKrSmqe5b3b9A";
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const dispatch = useDispatch();
@@ -39,21 +39,21 @@ const SearchBox = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center space-y-4">
+    <div className="relative flex flex-col items-center space-y-4 mt-10 mb-10">
       <input
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Enter a location"
-        className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-400 w-96 md:w-6/12 mt-10 bg-gray-300"
+        className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-400 w-full max-w-xs md:max-w-md bg-gray-100"
       />
       {searchResults.length > 0 && (
-        <ul className="absolute top-full left-1/2 transform -translate-x-1/2 w-96 md:w-6/12 max-h-40 overflow-y-auto border border-gray-300 rounded-md shadow-sm bg-white backdrop-blur-lg backdrop-filter bg-opacity-50">
+        <ul className="absolute top-full left-1/2 transform -translate-x-1/2 w-full max-w-xs md:max-w-md max-h-40 overflow-y-auto border border-gray-300 rounded-md shadow-sm bg-white backdrop-blur-lg backdrop-filter bg-opacity-50">
           {searchResults.map((result) => (
             <li
               key={result.id}
               onClick={() => handleSelectResult(result)}
-              className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+              className="px-3 py-2 cursor-pointer hover:bg-gray-100"
             >
               {result.place_name}
             </li>

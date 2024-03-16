@@ -66,57 +66,49 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-red-500">
-      <div className="w-8/12 max-w-md mx-auto p-8 bg-white rounded-xl shadow-2xl">
-        <div className="mx-auto">
-          <h1 className="font-bold text-3xl text-gray-600 text-center my-8">
+    <div className="flex justify-center items-center min-h-screen bg-red-500 px-4">
+      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-2xl">
+        <h1 className="md:font-bold md:text-3xl text-gray-600 text-center mb-8">
+          LOGIN
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            ref={inputFocus}
+            type="email"
+            id="email"
+            placeholder="Email"
+            className={`w-full bg-slate-100 p-2 md:p-3 rounded-xl shadow-lg focus:outline-none ${
+              errors.email ? "border-red-500" : "border"
+            }`}
+            onChange={handleChange}
+          />
+          {errors.email && <span className="text-red-500">{errors.email}</span>}
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className={`w-full bg-slate-100 p-2 md:p-3 rounded-xl shadow-lg focus:outline-none ${
+              errors.password ? "border-red-500" : "border"
+            }`}
+            onChange={handleChange}
+          />
+          {errors.password && (
+            <span className="text-red-500">{errors.password}</span>
+          )}
+          <button
+            type="submit"
+            className="w-full bg-gray-800 text-cyan-50 p-2 md:p-3 rounded-xl shadow-inner md:text-xl font-bold hover:opacity-90"
+          >
             LOGIN
-          </h1>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              ref={inputFocus}
-              type="email"
-              id="email"
-              placeholder="Email"
-              className={`bg-slate-100 p-3 rounded-xl shadow-lg focus:outline-none ${
-                errors.email ? "border-red-500" : "border"
-              }`}
-              onChange={handleChange}
-            />
-            {errors.email && (
-              <span className="text-red-500">{errors.email}</span>
-            )}
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              className={`bg-slate-100 p-3 rounded-xl shadow-lg focus:outline-none ${
-                errors.password ? "border-red-500" : "border"
-              }`}
-              onChange={handleChange}
-            />
-            {errors.password && (
-              <span className="text-red-500">{errors.password}</span>
-            )}
-            <button
-              type="submit"
-              className="bg-gray-800 text-cyan-50 p-3 my-6 rounded-xl shadow-inner text-xl font-bold hover:opacity-90"
-            >
-              LOGIN
-            </button>
-          </form>
-          <span className="my-5 italic text-center">
-            Don't have an Account ?
-            <Link to="/register" className="text-blue-600 ml-1 font-bold">
-              Register
-            </Link>
-          </span>
-          <div className="text-center">
-            <Link to="/forgot-password" className="italic text-red-700">
-              Forgot password
-            </Link>
-          </div>
-        </div>
+          </button>
+        </form>
+        <p className="mt-5 text-center text-xs md:text-sm">
+          Don't have an Account?{" "}
+          <Link to="/register" className="text-blue-600 font-bold">
+            Register
+          </Link>
+        </p>
+        <p className="text-center"></p>
       </div>
     </div>
   );

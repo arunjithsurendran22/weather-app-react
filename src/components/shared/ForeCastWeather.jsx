@@ -78,7 +78,7 @@ const ForeCastWeather = () => {
       {
         breakpoint: 320,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
