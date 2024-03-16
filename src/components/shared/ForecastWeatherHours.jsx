@@ -102,28 +102,28 @@ const ForecastWeatherHours = () => {
         {filterHoursForToday().map((hourData) => (
           <div
             key={hourData.time_epoch}
-            className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center"
+            className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
           >
-            <h3 className="text-xs italic dateTime text-wh">{hourData.time}</h3>
+            <h3 className="text-xs italic dateTime text-white">{hourData.time}</h3>
             <img
               src={hourData.condition.icon}
               alt=""
               className="w-12 h-12 mx-auto mb-2"
             />
             <div className="space-y-2">
-              <div className="flex items-center text-gray-700">
+              <div className="flex items-center text-white">
                 <SiCodeclimate className="mr-1 text-lg text-blue-500" />
                 <p className="text-xs md:text-sm">{hourData.condition.text}</p>
               </div>
-              <div className="flex items-center text-gray-700">
+              <div className="flex items-center text-white">
                 <WiHumidity className="mr-1 text-lg text-green-500" />
                 <p className="text-xs md:text-sm">Humidity: {hourData.humidity}</p>
               </div>
-              <div className="flex items-center text-gray-700">
+              <div className="flex items-center text-white">
                 <MdVisibilityOff className="mr-1 text-lg text-red-500" />
                 <p className="text-xs md:text-sm">Visibility: {hourData.vis_km} km</p>
               </div>
-              <div className="flex items-center text-gray-700">
+              <div className="flex items-center text-white">
                 <LuThermometerSun className="mr-1 text-lg text-yellow-500" />
                 <p className="text-xs md:text-sm">UV: {hourData.uv}</p>
               </div>

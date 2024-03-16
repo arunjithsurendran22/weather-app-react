@@ -93,23 +93,23 @@ const Astro = () => {
           {forecastData.forecast.forecastday.map((dayData) => (
             <div
               key={dayData.date_epoch}
-              className="bg-customPurpleDark bg-opacity-20 rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center mb-10"
+              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center mb-10"
             >
-              <h3 className="text-xs italic dateTime text-gray-300">{dayData.date}</h3>
+              <h3 className="text-xs italic dateTime text-white">{dayData.date}</h3>
               <div className="flex flex-col">
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <WiSunrise className="mr-2 text-lg text-yellow-400" />
                   <p className="text-xs md:text-sm fondSize">{dayData.astro.sunrise}</p>
                 </div>
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <WiSunset className="mr-2 text-lg text-orange-400" />
                   <p className="text-xs md:text-sm fondSize">{dayData.astro.sunset}</p>
                 </div>
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <FaMoon className="mr-2 text-lg text-gray-400" />
                   <p className="text-xs md:text-sm fondSize">{dayData.astro.moonrise}</p>
                 </div>
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <IoMoon className="mr-2 text-lg text-black " />
                   <p className="text-xs md:text-sm fondSize ">{dayData.astro.moonset}</p>
                 </div>

@@ -4,7 +4,7 @@ const placeSlice = createSlice({
   name: "place",
   initialState: {
     selectedPlace: "",
-    placeSaved: false, // Add a flag to indicate if place is saved
+    placeSaved: false,
   },
   reducers: {
     setSelectedPlace: (state, action) => {
@@ -13,6 +13,7 @@ const placeSlice = createSlice({
     setPlaceSaved: (state, action) => {
       state.placeSaved = action.payload;
     },
+
   },
 });
 

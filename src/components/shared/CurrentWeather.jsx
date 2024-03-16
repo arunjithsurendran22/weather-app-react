@@ -11,6 +11,7 @@ import {
 } from "react-icons/wi";
 import api from "../../authorization/api";
 import { setSelectedPlace } from "../store/placeSlice";
+import { setCurrentConditionText } from "../store/weatherSlice";
 
 const CurrentWeather = () => {
   const APIkey = "fc0f79a144e9415ca3f70223241003";
@@ -25,6 +26,7 @@ const CurrentWeather = () => {
           `http://api.weatherapi.com/v1/current.json?key=${APIkey}&q=${selectedPlace}&aqi=no`
         );
         setWeatherData(response.data);
+        dispatch(setCurrentConditionText(response.data.current.condition.text));
       } catch (error) {
         console.log("Failed to fetch current weather data:", error);
       }
@@ -63,7 +65,7 @@ const CurrentWeather = () => {
   }, [dispatch]);
 
   return (
-    <div className="max-w-md mx-auto bg-transparent text-gray-800 rounded-lg overflow-hidden shadow-md p-6">
+    <div className="max-w-md mx-auto  text-gray-800 rounded-lg overflow-hidden shadow-md p-6 border border-gray-900">
       {weatherData && (
         <div className="flex flex-col items-center justify-center">
           <img
@@ -71,18 +73,18 @@ const CurrentWeather = () => {
             alt={weatherData.current.condition.text}
             className="w-20 h-20 mb-4"
           />
-          <div className="text-4xl font-bold">
+          <div className="text-4xl font-bold text-gray-500">
             {weatherData.current.temp_c}°C
           </div>
-          <div className="text-lg mb-4">
+          <div className="text-lg mb-4 text-orange-400">
             {weatherData.current.condition.text}
           </div>
-          <div className="mb-4">
+          <div className="mb-4 text-orange-900 text-md">
             {weatherData.location.name}, {weatherData.location.region},{" "}
             {weatherData.location.country}
           </div>
-          <div className="mb-4">
-            Last Updated: {weatherData.current.last_updated}
+          <div className="mb-4 text-orange-800 font-bold">
+            {weatherData.current.last_updated}
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center bg-white bg-opacity-50 rounded-lg p-3 shadow-md">

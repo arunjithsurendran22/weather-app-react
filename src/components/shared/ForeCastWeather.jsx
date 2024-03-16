@@ -92,28 +92,28 @@ const ForeCastWeather = () => {
           {forecastData.forecast.forecastday.map((day) => (
             <div
               key={day.date_epoch}
-              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center"
+              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
             >
-              <h3 className="text-sm italic mb-2 text-gray-300">{day.date}</h3>
+              <h3 className="text-sm italic mb-2 text-gray-100">{day.date}</h3>
               <img
                 src={day.day.condition.icon}
                 alt=""
                 className="w-12 h-12 mx-auto mb-3"
               />
               <div className="space-y-2">
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <SiCodeclimate className="mr-1 text-lg text-blue-500" />
                   <p className="text-xs">{day.day.condition.text}</p>
                 </div>
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <WiHumidity className="mr-1 text-lg text-green-500" />
                   <p className="text-xs">Humidity: {day.day.avghumidity}</p>
                 </div>
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <MdVisibilityOff className="mr-1 text-lg text-red-500" />
                   <p className="text-xs">Visibility: {day.day.avgvis_km} km</p>
                 </div>
-                <div className="flex items-center text-gray-700">
+                <div className="flex items-center text-white">
                   <LuThermometerSun className="mr-1 text-lg text-yellow-500" />
                   <p className="text-xs">UV: {day.day.uv}</p>
                 </div>
