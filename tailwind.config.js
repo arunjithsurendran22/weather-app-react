@@ -12,7 +12,7 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        customPurple: '#031F2E',
+        customPurple: '#052F44',
       },
     },
   },

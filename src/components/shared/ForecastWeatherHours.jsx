@@ -8,13 +8,11 @@ import { WiHumidity } from "react-icons/wi";
 import { SiCodeclimate } from "react-icons/si";
 import { MdVisibilityOff } from "react-icons/md";
 import { LuThermometerSun } from "react-icons/lu";
-import "./style.css"
 
 const ForecastWeatherHours = () => {
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const [forecastData, setForecastData] = useState(null);
-  const [slidesToShow, setSlidesToShow] = useState(getSlidesToShow());
 
   useEffect(() => {
     const fetchForecastData = async () => {
@@ -33,32 +31,6 @@ const ForecastWeatherHours = () => {
       fetchForecastData();
     }
   }, [selectedPlace]);
-
-  // Function to determine the number of slides to show based on screen width
-  function getSlidesToShow() {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1280) {
-      return 5;
-    } else if (screenWidth >= 1024) {
-      return 4;
-    } else if (screenWidth >= 768) {
-      return 3;
-    } else if (screenWidth >= 640) {
-      return 3;
-    } else {
-      return 3;
-    }
-  }
-
-  useEffect(() => {
-    function handleResize() {
-      setSlidesToShow(getSlidesToShow());
-    }
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   // Configuration for the slider
   const settings = {
@@ -125,43 +97,35 @@ const ForecastWeatherHours = () => {
   };
 
   return (
-    <div className="w-full md:w-2/4 mx-auto mt-10">
-      <Slider {...settings} className="gap-2">
+    <div className="w-full md:w-5/12 mx-auto mt-10">
+      <Slider {...settings} className="gap-5">
         {filterHoursForToday().map((hourData) => (
           <div
             key={hourData.time_epoch}
-            className="bg-gray-800 bg-opacity-25 rounded-lg p-4 shadow-lg flex flex-col justify-center items-center"
+            className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center"
           >
-            <h3 className="text-xs italic dateTime">{hourData.time}</h3>
+            <h3 className="text-xs italic dateTime text-wh">{hourData.time}</h3>
             <img
               src={hourData.condition.icon}
               alt=""
               className="w-12 h-12 mx-auto mb-2"
             />
-            <div className="flex flex-col">
-              <div className="flex">
-                <SiCodeclimate className="mr-2 text-lg" />
-                <p className="text-xs md:text-sm fondSize">
-                  {hourData.condition.text}
-                </p>
+            <div className="space-y-2">
+              <div className="flex items-center text-gray-700">
+                <SiCodeclimate className="mr-1 text-lg text-blue-500" />
+                <p className="text-xs md:text-sm">{hourData.condition.text}</p>
               </div>
-              <div className="flex">
-                <WiHumidity className="mr-2 text-lg" />
-                <p className="text-xs md:text-sm fondSize" >
-                  {hourData.humidity}
-                </p>
+              <div className="flex items-center text-gray-700">
+                <WiHumidity className="mr-1 text-lg text-green-500" />
+                <p className="text-xs md:text-sm">Humidity: {hourData.humidity}</p>
               </div>
-              <div className="flex">
-                <MdVisibilityOff className="mr-2 text-lg" />
-                <p className="text-xs md:text-sm fondSize" >
-                  {hourData.vis_km} km
-                </p>
+              <div className="flex items-center text-gray-700">
+                <MdVisibilityOff className="mr-1 text-lg text-red-500" />
+                <p className="text-xs md:text-sm">Visibility: {hourData.vis_km} km</p>
               </div>
-              <div className="flex">
-                <LuThermometerSun className="mr-2 text-lg" />
-                <p className="text-xs md:text-sm fondSize">
-                  UV: {hourData.uv}
-                </p>
+              <div className="flex items-center text-gray-700">
+                <LuThermometerSun className="mr-1 text-lg text-yellow-500" />
+                <p className="text-xs md:text-sm">UV: {hourData.uv}</p>
               </div>
             </div>
           </div>

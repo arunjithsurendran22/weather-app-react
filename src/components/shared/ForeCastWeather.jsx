@@ -36,7 +36,7 @@ const ForeCastWeather = () => {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow:5,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -86,35 +86,37 @@ const ForeCastWeather = () => {
   };
 
   return (
-    <div className="md:w-2/4 mx-auto mt-10">
+    <div className="w-full md:w-5/12 mx-auto mt-10">
       {forecastData && (
-        <Slider {...settings} className="gap-2">
+        <Slider {...settings} className="gap-5">
           {forecastData.forecast.forecastday.map((day) => (
             <div
               key={day.date_epoch}
-              className="bg-gray-800 bg-opacity-25 rounded-lg p-4 shadow-lg flex flex-col justify-center items-center"
+              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-md rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center"
             >
-              <h3 className="text-xs italic dateTime">{day.date}</h3>
+              <h3 className="text-sm italic mb-2 text-gray-300">{day.date}</h3>
               <img
                 src={day.day.condition.icon}
                 alt=""
-                className="w-12 h-12 mx-auto mb-2"
+                className="w-12 h-12 mx-auto mb-3"
               />
-              <div className="flex items-center">
-                <SiCodeclimate className="mr-2 text-xl" />
-                <p className="text-sm fondSize">{day.day.condition.text}</p>
-              </div>
-              <div className="flex items-center">
-                <WiHumidity className="mr-2 text-xl" />
-                <p className="text-sm fondSize">{day.day.avghumidity}</p>
-              </div>
-              <div className="flex items-center">
-                <MdVisibilityOff className="mr-2 text-xl" />
-                <p className="text-sm fondSize">{day.day.avgvis_km} km</p>
-              </div>
-              <div className="flex items-center">
-                <LuThermometerSun className="mr-2 text-xl" />
-                <p className="text-sm fondSize">UV: {day.day.uv}</p>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700">
+                  <SiCodeclimate className="mr-1 text-lg text-blue-500" />
+                  <p className="text-xs">{day.day.condition.text}</p>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <WiHumidity className="mr-1 text-lg text-green-500" />
+                  <p className="text-xs">Humidity: {day.day.avghumidity}</p>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <MdVisibilityOff className="mr-1 text-lg text-red-500" />
+                  <p className="text-xs">Visibility: {day.day.avgvis_km} km</p>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <LuThermometerSun className="mr-1 text-lg text-yellow-500" />
+                  <p className="text-xs">UV: {day.day.uv}</p>
+                </div>
               </div>
             </div>
           ))}

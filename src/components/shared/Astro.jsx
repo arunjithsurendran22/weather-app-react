@@ -9,7 +9,7 @@ import { FaMoon } from "react-icons/fa";
 import { IoMoon } from "react-icons/io5";
 import "./style.css";
 
-const ForecastWeatherHours = () => {
+const Astro = () => {
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const [forecastData, setForecastData] = useState(null);
@@ -87,39 +87,31 @@ const ForecastWeatherHours = () => {
   };
 
   return (
-    <div className="w-full md:w-2/4 mx-auto mt-10">
+    <div className="w-full md:w-5/12 mx-auto mt-10 ">
       {forecastData && (
         <Slider {...settings} className="gap-2">
           {forecastData.forecast.forecastday.map((dayData) => (
             <div
               key={dayData.date_epoch}
-              className="bg-gray-800 bg-opacity-25 rounded-lg p-4 shadow-lg flex flex-col justify-center items-center"
+              className="bg-customPurpleDark bg-opacity-20 rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center mb-10"
             >
-              <h3 className="text-xs italic dateTime">{dayData.date}</h3>
+              <h3 className="text-xs italic dateTime text-gray-300">{dayData.date}</h3>
               <div className="flex flex-col">
-                <div className="flex items-center">
+                <div className="flex items-center text-gray-700">
                   <WiSunrise className="mr-2 text-lg text-yellow-400" />
-                  <p className="text-xs md:text-sm fondSize">
-                    {dayData.astro.sunrise}
-                  </p>
+                  <p className="text-xs md:text-sm fondSize">{dayData.astro.sunrise}</p>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-gray-700">
                   <WiSunset className="mr-2 text-lg text-orange-400" />
-                  <p className="text-xs md:text-sm fondSize">
-                    {dayData.astro.sunset}
-                  </p>
+                  <p className="text-xs md:text-sm fondSize">{dayData.astro.sunset}</p>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-gray-700">
                   <FaMoon className="mr-2 text-lg text-gray-400" />
-                  <p className="text-xs md:text-sm fondSize">
-                    {dayData.astro.moonrise}
-                  </p>
+                  <p className="text-xs md:text-sm fondSize">{dayData.astro.moonrise}</p>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-gray-700">
                   <IoMoon className="mr-2 text-lg text-black " />
-                  <p className="text-xs md:text-sm fondSize ">
-                    {dayData.astro.moonset}
-                  </p>
+                  <p className="text-xs md:text-sm fondSize ">{dayData.astro.moonset}</p>
                 </div>
               </div>
             </div>
@@ -130,4 +122,4 @@ const ForecastWeatherHours = () => {
   );
 };
 
-export default ForecastWeatherHours;
+export default Astro;
