@@ -8,7 +8,7 @@ import { IoIosAdd } from "react-icons/io";
 import { setPlaceSaved } from "../store/placeSlice";
 
 const SavePlaceButton = () => {
-  const [saved, setSaved] = useState(false); // State to track whether place is saved
+  const [saved, setSaved] = useState(false); 
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const placeSaved = useSelector((state) => state.place.placeSaved);
   const dispatch = useDispatch();
@@ -24,8 +24,6 @@ const SavePlaceButton = () => {
       dispatch(setPlaceSaved(true));
       setSaved(true);
       toast.success(response.data.message);
-      setSaved(true);
-      console.log(response.data);
     } catch (error) {
       console.error("Error saving selected place:", error);
       toast.error("Place already exists");
@@ -41,10 +39,10 @@ const SavePlaceButton = () => {
   }, [selectedPlace]);
 
   return (
-    <div className="flex justify-end container mx-auto mt-5">
+    <div className="flex justify-end container mx-auto mt-5 px-3 md:px-10">
       <button
         onClick={handleSaveLocation}
-        className={`flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
+        className={`flex items-center justify-center w-10  h-10 rounded-full bg-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
           saved ? "bg-green-500" : ""
         }`}
       >

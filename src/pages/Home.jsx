@@ -16,7 +16,7 @@ const Home = () => {
   const newCondition =conditionText.trim()
   console.log(newCondition,"trimmed");
 
-  const backgroundImage = weatherImages[newCondition] || "";
+  const backgroundImage = weatherImages[newCondition] || "https://wallpaperaccess.com/full/2942781.jpg";
   console.log("backgroundImage", backgroundImage);
   
   return (

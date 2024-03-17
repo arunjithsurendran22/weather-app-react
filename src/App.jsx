@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import ProtectedRoute from "./authorization/ProtectedRoute";
+
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
       </Routes>
-      <ToastContainer />
+      <ToastContainer  position="bottom-right"/>
     </Router>
   );
 }

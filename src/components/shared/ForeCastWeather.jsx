@@ -100,6 +100,7 @@ const ForeCastWeather = () => {
   return (
     <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto mt-10">
       <DateSelector/>
+      <h1 className="font-bold italic text-sm text-white">DAY</h1>
       {forecastData &&
         (selectDate ? (
           <div className="overflow-x-auto">

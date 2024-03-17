@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-16 flex justify-between items-center bg-gray-800 text-white px-5 md:px-72 ">
+    <div className="h-16 flex justify-between items-center bg-gray-800 text-white px-5 lg:px-72 ">
       <div>
         <CurrentLocation />
       </div>
