@@ -47,7 +47,7 @@ const SearchBox = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Enter a location"
-        className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-400 w-full bg-gray-100"
+        className="px-3 py-2 border-0 rounded-md shadow-sm focus:outline-none focus:border-blue-400 w-full bg-gray-600 container"
       />
       {searchResults.length > 0 && (
         <ul className="absolute top-full left-1/2 transform -translate-x-1/2 w-full max-w-md max-h-40 overflow-y-auto border border-gray-300 rounded-md shadow-sm bg-white backdrop-blur-lg backdrop-filter bg-opacity-50 z-50">

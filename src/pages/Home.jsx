@@ -1,5 +1,4 @@
 import SearchBox from "../components/shared/SearchBox";
-import ShowPlace from "./ShowPlace";
 import ForeCastWeather from "../components/shared/ForeCastWeather";
 import CurrentWeather from "../components/shared/CurrentWeather";
 import ForecastWeatherHours from "../components/shared/ForecastWeatherHours";
@@ -9,6 +8,7 @@ import SavedLocations from "../components/shared/SavedLocations";
 import Navbar from "../components/shared/Navbar";
 import { useSelector } from "react-redux";
 import { weatherImages } from "./weatherCondtions";
+import DateSelector from "../components/shared/DateSelector";
 
 const Home = () => {
   const conditionText = useSelector(
@@ -34,6 +34,7 @@ const Home = () => {
       <SavedLocations />
       <SearchBox />
       <CurrentWeather />
+      <DateSelector/>
       <ForeCastWeather />
       <ForecastWeatherHours />
       <Astro />

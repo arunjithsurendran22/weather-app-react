@@ -16,6 +16,7 @@ import { setCurrentConditionText } from "../store/weatherSlice";
 const CurrentWeather = () => {
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
+  console.log("selectedPlace",selectedPlace);
   const [weatherData, setWeatherData] = useState(null);
   const dispatch = useDispatch();
 
@@ -89,38 +90,38 @@ const CurrentWeather = () => {
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiHumidity className="text-gray-600 mr-2" />
-              <p className="text-xs sm:text-sm">
+              <p className="text-xs sm:text-sm text-white">
                 Humidity: {weatherData.current.humidity}%
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiStrongWind className="text-gray-600 mr-2" />
-              <p className="text-xs sm:text-sm">
+              <p className="text-xs sm:text-sm text-white">
                 Wind: {weatherData.current.wind_kph} km/h{" "}
                 {weatherData.current.wind_dir}
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiThermometer className="text-gray-600 mr-2" />
-              <p className="text-xs sm:text-sm">
+              <p className="text-xs sm:text-sm text-white">
                 Feels like: {weatherData.current.feelslike_c}°C
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiBarometer className="text-gray-600 mr-2" />
-              <p className="text-xs sm:text-sm">
+              <p className="text-xs sm:text-sm text-white">
                 Pressure: {weatherData.current.pressure_mb} mb
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiCloud className="text-gray-600 mr-2" />
-              <p className="text-xs sm:text-sm">
+              <p className="text-xs sm:text-sm text-white">
                 Cloud: {weatherData.current.cloud}%
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiTime4 className="text-gray-600 mr-2" />
-              <p className="text-xs sm:text-sm">
+              <p className="text-xs sm:text-sm text-white">
                 Visibility: {weatherData.current.vis_km} km
               </p>
             </div>

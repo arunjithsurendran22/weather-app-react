@@ -11,6 +11,8 @@ import { LuThermometerSun } from "react-icons/lu";
 
 const ForeCastWeather = () => {
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
+  const selectDate = useSelector((state) => state.date.selectedDate);
+  console.log("selectDate",selectDate);
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const [forecastData, setForecastData] = useState(null);
 
@@ -20,6 +22,7 @@ const ForeCastWeather = () => {
         const response = await axios.get(
           `https://api.weatherapi.com/v1/forecast.json?key=${APIkey}&q=${selectedPlace}&days=10&aqi=no&alerts=no`
         );
+        console.log(response.data);
         setForecastData(response.data);
       } catch (error) {
         console.log("Failed to fetch forecast weather data:", error);
@@ -71,7 +74,7 @@ const ForeCastWeather = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },

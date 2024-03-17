@@ -5,11 +5,13 @@ import Drawer from "./Drawer";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       const response = await api.post("/profile/logout");
       if (response.data.message === "Logout successful") {
         localStorage.clear();
+        // Navigate to the login page
         navigate("/");
       }
     } catch (error) {

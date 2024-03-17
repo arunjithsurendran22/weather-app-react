@@ -4,8 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-
-
+import ProtectedRoute from "./authorization/ProtectedRoute";
 
 function App() {
   return (
