@@ -11,6 +11,7 @@ import { LuThermometerSun } from "react-icons/lu";
 
 const ForecastWeatherHours = () => {
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
+  const selectDate = useSelector((state) => state.date.selectedDate);
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const [forecastData, setForecastData] = useState(null);
 
@@ -21,7 +22,6 @@ const ForecastWeatherHours = () => {
           `https://api.weatherapi.com/v1/forecast.json?key=${APIkey}&q=${selectedPlace}&days=10&aqi=no&alerts=no`
         );
         setForecastData(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log("Failed to fetch forecast weather data:", error);
       }
@@ -31,6 +31,19 @@ const ForecastWeatherHours = () => {
       fetchForecastData();
     }
   }, [selectedPlace]);
+
+  // Function to filter out hours data for the selected date or current date if no date selected
+  const filterHoursForSelectedDate = () => {
+    if (!forecastData) return [];
+    const currentDate = new Date().toISOString().split("T")[0]; // Current date in UTC format
+    const selectedDate = selectDate
+      ? selectDate.toISOString().split("T")[0]
+      : currentDate; // Selected date or current date if none selected
+    const selectedDayData = forecastData.forecast.forecastday.find(
+      (day) => day.date === selectedDate
+    );
+    return selectedDayData ? selectedDayData.hour : [];
+  };
 
   // Configuration for the slider
   const settings = {
@@ -86,23 +99,13 @@ const ForecastWeatherHours = () => {
     ],
   };
 
-  // Function to filter out hours data for the current date
-  const filterHoursForToday = () => {
-    if (!forecastData) return [];
-    const currentDate = new Date().toISOString().slice(0, 10);
-    const todayData = forecastData.forecast.forecastday.find(
-      (day) => day.date === currentDate
-    );
-    return todayData ? todayData.hour : [];
-  };
-
   return (
-    <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto mt-10">
+    <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto ">
       <Slider {...settings} className="gap-5">
-        {filterHoursForToday().map((hourData) => (
+        {filterHoursForSelectedDate().map((hourData) => (
           <div
             key={hourData.time_epoch}
-            className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
+            className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center mb-20 "
           >
             <h3 className="text-xs italic dateTime text-white">
               {hourData.time}

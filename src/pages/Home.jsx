@@ -17,7 +17,7 @@ const Home = () => {
   console.log(weatherImages);
 
   const backgroundImage = weatherImages[conditionText] || "";
-  console.log("backgroundImage",backgroundImage);
+  console.log("backgroundImage", backgroundImage);
   console.log("conditionText", conditionText);
   return (
     <div
@@ -34,10 +34,9 @@ const Home = () => {
       <SavedLocations />
       <SearchBox />
       <CurrentWeather />
-      <DateSelector/>
       <ForeCastWeather />
-      <ForecastWeatherHours />
       <Astro />
+      <ForecastWeatherHours />
     </div>
   );
 };
