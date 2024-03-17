@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker/dist/react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setDate } from "../store/dateSlice";
 import { FaFilter } from "react-icons/fa6";
 import { RiArrowGoBackFill } from "react-icons/ri";
@@ -9,6 +9,13 @@ import { RiArrowGoBackFill } from "react-icons/ri";
 const DateSelector = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const dispatch = useDispatch();
+  const selectedPlace = useSelector((state) => state.place.selectedPlace);
+
+  useEffect(() => {
+    // Reset date when selectedPlace changes
+    setSelectedDate(null);
+    dispatch(setDate(null));
+  }, [selectedPlace, dispatch]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -21,16 +28,16 @@ const DateSelector = () => {
   };
 
   return (
-    <div className="flex mb-10  ">
-      <FaFilter className={`text-${selectedDate ? "red" : "green"}-600 mr-2 text-2xl`} />
+    <div className="flex mb-10 items-center">
+      <FaFilter className= "mr-2 text-2xl text-white" />
       <div className="relative">
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat="MMMM d, yyyy"
           placeholderText="Select a date"
-          showPopperArrow={false} // Hide the calendar after date selection
-          className="py-2 px-3 rounded-lg focus:outline-none focus:ring focus:ring-red-300 transition-shadow duration-300 ease-in-out"
+          showPopperArrow={false} 
+          className="py-2 px-3 rounded-lg focus:outline-none focus:ring focus:ring-red-300 transition-shadow duration-300 ease-in-out bg-gray-600"
         />
         {selectedDate && (
           <button

@@ -101,13 +101,14 @@ const Astro = () => {
 
   return (
     <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto mt-10">
+      <h1 className="font-bold italic text-sm text-white">ASTRO</h1>
       {selectDate ? (
         <div className="overflow-x-auto mb-10 items-center">
         <table className="min-w-full bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg shadow-md">
           <thead>
             <tr className="bg-customPurple bg-opacity-70 text-white">
-              <th className="px-6 py-3 text-center">Sun</th>
-              <th className="px-6 py-3 text-center">Moon</th>
+              <th className="px-6 py-3 text-center text-xs md:text-sm">Sun</th>
+              <th className="px-6 py-3 text-center text-xs md:text-sm">Moon</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">

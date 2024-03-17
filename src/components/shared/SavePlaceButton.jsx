@@ -21,10 +21,10 @@ const SavePlaceButton = () => {
           title: selectedPlace,
         }
       );
-      dispatch(setPlaceSaved(true)); 
+      dispatch(setPlaceSaved(true));
       setSaved(true);
       toast.success(response.data.message);
-      setSaved(true); 
+      setSaved(true);
       console.log(response.data);
     } catch (error) {
       console.error("Error saving selected place:", error);
@@ -33,7 +33,7 @@ const SavePlaceButton = () => {
   };
 
   useEffect(() => {
-    setSaved(placeSaved); 
+    setSaved(placeSaved);
   }, [placeSaved]);
 
   useEffect(() => {
@@ -41,9 +41,18 @@ const SavePlaceButton = () => {
   }, [selectedPlace]);
 
   return (
-    <div>
-      <button onClick={handleSaveLocation} className="text-white text-2xl">
-        {saved ? <FaCheck /> : <IoIosAdd />} 
+    <div className="flex justify-end container mx-auto mt-5">
+      <button
+        onClick={handleSaveLocation}
+        className={`flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
+          saved ? "bg-green-500" : ""
+        }`}
+      >
+        {saved ? (
+          <FaCheck className="text-2xl" />
+        ) : (
+          <IoIosAdd className="text-2xl" />
+        )}
       </button>
     </div>
   );

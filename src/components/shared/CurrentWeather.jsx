@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import {
-  WiHumidity,
-  WiStrongWind,
-  WiThermometer,
-  WiBarometer,
-  WiCloud,
-  WiTime4,
-} from "react-icons/wi";
+
 import api from "../../authorization/api";
 import { setSelectedPlace } from "../store/placeSlice";
 import { setCurrentConditionText } from "../store/weatherSlice";
+import { WiHumidity, WiStrongWind, WiThermometer, WiBarometer, WiCloud, WiTime4 } from "react-icons/wi";
 
 const CurrentWeather = () => {
   const APIkey = "fc0f79a144e9415ca3f70223241003";
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
-  console.log("selectedPlace",selectedPlace);
+  console.log("selectedPlace", selectedPlace);
   const [weatherData, setWeatherData] = useState(null);
   const dispatch = useDispatch();
 
@@ -66,7 +60,7 @@ const CurrentWeather = () => {
   }, [dispatch]);
 
   return (
-    <div className="container sm:w-5/12  md:w-6/12 lg:w-4/12  mx-auto text-gray-800 rounded-lg overflow-hidden shadow-md py-5 px-5 relative bg-customPurple bg-opacity-20 backdrop-filter backdrop-blur-md">
+    <div className="container sm:w-5/12 md:w-6/12 lg:w-4/12 mx-auto text-gray-800 rounded-lg overflow-hidden shadow-md py-5 px-5 relative bg-customPurple bg-opacity-20 backdrop-filter backdrop-blur-md">
       {weatherData && (
         <div className="flex flex-col items-center justify-center">
           <img
@@ -89,38 +83,38 @@ const CurrentWeather = () => {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
-              <WiHumidity className="text-gray-600 mr-2" />
+              <WiHumidity className="text-blue-500 mr-2 text-3xl" />
               <p className="text-xs sm:text-sm text-white">
                 Humidity: {weatherData.current.humidity}%
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
-              <WiStrongWind className="text-gray-600 mr-2" />
+              <WiStrongWind className="text-green-500 mr-2 text-3xl" />
               <p className="text-xs sm:text-sm text-white">
                 Wind: {weatherData.current.wind_kph} km/h{" "}
                 {weatherData.current.wind_dir}
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
-              <WiThermometer className="text-gray-600 mr-2" />
+              <WiThermometer className="text-red-500 mr-2 text-3xl" />
               <p className="text-xs sm:text-sm text-white">
                 Feels like: {weatherData.current.feelslike_c}°C
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
-              <WiBarometer className="text-gray-600 mr-2" />
+              <WiBarometer className="text-yellow-500 mr-2 text-3xl" />
               <p className="text-xs sm:text-sm text-white">
                 Pressure: {weatherData.current.pressure_mb} mb
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
-              <WiCloud className="text-gray-600 mr-2" />
+              <WiCloud className="text-purple-500 mr-2 text-3xl" />
               <p className="text-xs sm:text-sm text-white">
                 Cloud: {weatherData.current.cloud}%
               </p>
             </div>
             <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
-              <WiTime4 className="text-gray-600 mr-2" />
+              <WiTime4 className="text-indigo-500 mr-2 text-3xl" />
               <p className="text-xs sm:text-sm text-white">
                 Visibility: {weatherData.current.vis_km} km
               </p>

@@ -100,28 +100,28 @@ const ForeCastWeather = () => {
   return (
     <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto mt-10">
       <DateSelector/>
-      
       {forecastData &&
         (selectDate ? (
           <div className="overflow-x-auto">
+            <h1 className="font-bold italic text-sm text-white">DAY</h1>
             <table className="min-w-full bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg shadow-md">
               <thead>
                 <tr className="bg-customPurple bg-opacity-70 text-white">
-                  <th className="px-6 py-3 text-left">Date</th>
-                  <th className="px-6 py-3 text-left">Condition</th>
-                  <th className="px-6 py-3 text-left">Humidity</th>
-                  <th className="px-6 py-3 text-left">Visibility</th>
-                  <th className="px-6 py-3 text-left">UV</th>
+                  <th className="px-6 py-3 text-left text-xs md:text-sm">Date</th>
+                  <th className="px-6 py-3 text-left text-xs md:text-sm">Condition</th>
+                  <th className="px-6 py-3 text-left text-xs md:text-sm">Humidity</th>
+                  <th className="px-6 py-3 text-left text-xs md:text-sm">Visibility</th>
+                  <th className="px-6 py-3 text-left text-xs md:text-sm">UV</th>
                 </tr>
               </thead>
               <tbody className="text-white ">
                 {filteredForecast.map((day) => (
                   <tr key={day.date_epoch} className="border-b border-gray-400">
-                    <td className="px-6 py-4">{day.date}</td>
-                    <td className="px-6 py-4">{day.day.condition.text}</td>
-                    <td className="px-6 py-4">{day.day.avghumidity}</td>
-                    <td className="px-6 py-4">{day.day.avgvis_km} km</td>
-                    <td className="px-6 py-4">{day.day.uv}</td>
+                    <td className="px-6 py-4 text-xs md:text-sm">{day.date}</td>
+                    <td className="px-6 py-4 text-xs md:text-sm">{day.day.condition.text}</td>
+                    <td className="px-6 py-4 text-xs md:text-sm">{day.day.avghumidity}</td>
+                    <td className="px-6 py-4 text-xs md:text-sm">{day.day.avgvis_km} km</td>
+                    <td className="px-6 py-4 text-xs md:text-sm">{day.day.uv}</td>
                   </tr>
                 ))}
               </tbody>
@@ -132,7 +132,7 @@ const ForeCastWeather = () => {
             {filteredForecast.map((day) => (
               <div
                 key={day.date_epoch}
-                className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center"
+                className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 text-xs md:text-sm shadow-md flex flex-col justify-center items-center text-center"
               >
                 <h3 className="text-sm italic mb-2 text-gray-100">
                   {day.date}

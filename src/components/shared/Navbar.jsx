@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import CurrentLocation from "../shared/CurrentLocation";
 import api from "../../authorization/api";
-import Drawer from "./Drawer";
+import { IoIosLogOut } from "react-icons/io";
+import { ImExit } from "react-icons/im";
+import { useState } from "react";
+import { SlLogout } from "react-icons/sl";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [showExitButton, setShowExitButton] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -19,12 +23,29 @@ const Navbar = () => {
     }
   };
 
+  const handleMouseEnter = () => {
+    setShowExitButton(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowExitButton(false);
+  };
+
   return (
-    <div className="h-16 flex justify-between items-center bg-gray-800 text-white px-6">
-      <CurrentLocation />
-      <div className="flex justify-between w-72">
-        <Drawer />
-        <button onClick={handleLogout}>Logout</button>
+    <div className="h-16 flex justify-between items-center bg-gray-800 text-white px-5 md:px-72 ">
+      <div>
+        <CurrentLocation />
+      </div>
+      <div
+        className="flex justify-between text-2xl relative"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {showExitButton ? (
+          <ImExit className="animate-bounce cursor-pointer" onClick={handleLogout} />
+        ) : (
+          <button onClick={handleLogout}><SlLogout/></button>
+        )}
       </div>
     </div>
   );

@@ -101,6 +101,7 @@ const ForecastWeatherHours = () => {
 
   return (
     <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto ">
+      <h1 className="font-bold italic text-sm text-white">HOURS</h1>
       <Slider {...settings} className="gap-5">
         {filterHoursForSelectedDate().map((hourData) => (
           <div

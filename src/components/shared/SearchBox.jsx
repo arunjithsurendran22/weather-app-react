@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSelectedPlace } from "../store/placeSlice";
 
+
 const SearchBox = () => {
   const nominatimBaseUrl = "https://nominatim.openstreetmap.org/search";
   const [searchQuery, setSearchQuery] = useState("");
@@ -62,6 +63,7 @@ const SearchBox = () => {
           ))}
         </ul>
       )}
+      
     </div>
   );
 };

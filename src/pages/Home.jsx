@@ -8,17 +8,17 @@ import SavedLocations from "../components/shared/SavedLocations";
 import Navbar from "../components/shared/Navbar";
 import { useSelector } from "react-redux";
 import { weatherImages } from "./weatherCondtions";
-import DateSelector from "../components/shared/DateSelector";
 
 const Home = () => {
   const conditionText = useSelector(
     (state) => state.weather.currentConditionText
   );
-  console.log(weatherImages);
+  const newCondition =conditionText.trim()
+  console.log(newCondition,"trimmed");
 
-  const backgroundImage = weatherImages[conditionText] || "";
+  const backgroundImage = weatherImages[newCondition] || "";
   console.log("backgroundImage", backgroundImage);
-  console.log("conditionText", conditionText);
+  
   return (
     <div
       className="bg-customPurple h-full"
