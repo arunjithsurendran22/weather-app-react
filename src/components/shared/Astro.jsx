@@ -87,7 +87,7 @@ const Astro = () => {
   };
 
   return (
-    <div className="w-full md:w-5/12 mx-auto mt-10 ">
+    <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto mt-10">
       {forecastData && (
         <Slider {...settings} className="gap-2">
           {forecastData.forecast.forecastday.map((dayData) => (

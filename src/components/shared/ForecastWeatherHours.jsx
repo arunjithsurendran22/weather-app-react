@@ -97,14 +97,16 @@ const ForecastWeatherHours = () => {
   };
 
   return (
-    <div className="w-full md:w-5/12 mx-auto mt-10">
+    <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto mt-10">
       <Slider {...settings} className="gap-5">
         {filterHoursForToday().map((hourData) => (
           <div
             key={hourData.time_epoch}
             className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
           >
-            <h3 className="text-xs italic dateTime text-white">{hourData.time}</h3>
+            <h3 className="text-xs italic dateTime text-white">
+              {hourData.time}
+            </h3>
             <img
               src={hourData.condition.icon}
               alt=""
@@ -113,15 +115,24 @@ const ForecastWeatherHours = () => {
             <div className="space-y-2">
               <div className="flex items-center text-white">
                 <SiCodeclimate className="mr-1 text-lg text-blue-500" />
-                <p className="text-xs md:text-sm">{hourData.condition.text}</p>
+                <p className="text-xs md:text-sm">
+                  {hourData.condition.text.length > 10
+                    ? `${hourData.condition.text.slice(0, 10)}...`
+                    : hourData.condition.text}
+                </p>
               </div>
+
               <div className="flex items-center text-white">
                 <WiHumidity className="mr-1 text-lg text-green-500" />
-                <p className="text-xs md:text-sm">Humidity: {hourData.humidity}</p>
+                <p className="text-xs md:text-sm">
+                  Humidity: {hourData.humidity}
+                </p>
               </div>
               <div className="flex items-center text-white">
                 <MdVisibilityOff className="mr-1 text-lg text-red-500" />
-                <p className="text-xs md:text-sm">Visibility: {hourData.vis_km} km</p>
+                <p className="text-xs md:text-sm">
+                  Visibility: {hourData.vis_km} km
+                </p>
               </div>
               <div className="flex items-center text-white">
                 <LuThermometerSun className="mr-1 text-lg text-yellow-500" />

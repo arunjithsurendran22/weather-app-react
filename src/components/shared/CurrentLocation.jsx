@@ -4,9 +4,6 @@ import { useDispatch } from "react-redux";
 import { setSelectedPlace } from "../store/placeSlice";
 
 const CurrentLocation = () => {
-  const accessToken =
-    "pk.eyJ1IjoiYXJ1bmppdGhzdXJlbmRyYW4iLCJhIjoiY2x0bndtODQ2MGFtYTJpcXBmcmdic3B3NSJ9.9nqnmlBgy-DAxDPWu4l3Gw";
-
   const dispatch = useDispatch();
   const [currentPlace, setCurrentPlace] = useState("");
 
@@ -29,11 +26,11 @@ const CurrentLocation = () => {
   const getPlaceName = async (latitude, longitude) => {
     try {
       const response = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${accessToken}`
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
       );
       const data = await response.json();
-      if (data.features && data.features.length > 0) {
-        const placeName = data.features[0].place_name;
+      if (data.display_name) {
+        const placeName = data.display_name;
         setCurrentPlace(placeName);
         dispatch(setSelectedPlace(placeName)); // Dispatch the place name to Redux
       } else {

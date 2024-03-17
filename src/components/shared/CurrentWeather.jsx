@@ -14,7 +14,7 @@ import { setSelectedPlace } from "../store/placeSlice";
 import { setCurrentConditionText } from "../store/weatherSlice";
 
 const CurrentWeather = () => {
-  const APIkey = import.meta.env.VITE_REACT_APP_API_KEY
+  const APIkey = "fc0f79a144e9415ca3f70223241003";
   const selectedPlace = useSelector((state) => state.place.selectedPlace);
   const [weatherData, setWeatherData] = useState(null);
   const dispatch = useDispatch();
@@ -65,60 +65,62 @@ const CurrentWeather = () => {
   }, [dispatch]);
 
   return (
-    <div className="max-w-md mx-auto text-gray-800 rounded-lg overflow-hidden shadow-md p-6  relative bg-customPurple bg-opacity-20 backdrop-filter backdrop-blur-md">
+    <div className="container sm:w-5/12  md:w-6/12 lg:w-4/12  mx-auto text-gray-800 rounded-lg overflow-hidden shadow-md py-5 px-5 relative bg-customPurple bg-opacity-20 backdrop-filter backdrop-blur-md">
       {weatherData && (
         <div className="flex flex-col items-center justify-center">
           <img
             src={weatherData.current.condition.icon}
             alt={weatherData.current.condition.text}
-            className="w-20 h-20 mb-4"
+            className="w-24 h-24 sm:w-32 sm:h-32 mb-4"
           />
-          <div className="text-4xl font-bold text-white">
+          <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
             {weatherData.current.temp_c}°C
           </div>
-          <div className="text-lg mb-4 text-white">
+          <div className="text-lg sm:text-base lg:text-lg mb-4 text-white">
             {weatherData.current.condition.text}
           </div>
-          <div className="mb-4 text-white text-md">
+          <div className="mb-4 text-white text-sm sm:text-base lg:text-lg">
             {weatherData.location.name}, {weatherData.location.region},{" "}
             {weatherData.location.country}
           </div>
-          <div className="mb-4 text-white font-bold">
+          <div className="mb-4 text-white font-bold text-xs sm:text-sm lg:text-base">
             {weatherData.current.last_updated}
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex items-center bg-white bg-opacity-50 rounded-lg p-3 shadow-md">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiHumidity className="text-gray-600 mr-2" />
-              <p className="text-lg">
+              <p className="text-xs sm:text-sm">
                 Humidity: {weatherData.current.humidity}%
               </p>
             </div>
-            <div className="flex items-center bg-white bg-opacity-50 rounded-lg p-3 shadow-md">
+            <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiStrongWind className="text-gray-600 mr-2" />
-              <p className="text-lg">
+              <p className="text-xs sm:text-sm">
                 Wind: {weatherData.current.wind_kph} km/h{" "}
                 {weatherData.current.wind_dir}
               </p>
             </div>
-            <div className="flex items-center bg-white bg-opacity-50 rounded-lg p-3 shadow-md">
+            <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiThermometer className="text-gray-600 mr-2" />
-              <p className="text-lg">
+              <p className="text-xs sm:text-sm">
                 Feels like: {weatherData.current.feelslike_c}°C
               </p>
             </div>
-            <div className="flex items-center bg-white bg-opacity-50 rounded-lg p-3 shadow-md">
+            <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiBarometer className="text-gray-600 mr-2" />
-              <p className="text-lg">
+              <p className="text-xs sm:text-sm">
                 Pressure: {weatherData.current.pressure_mb} mb
               </p>
             </div>
-            <div className="flex items-center bg-white bg-opacity-50 rounded-lg p-3 shadow-md">
+            <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiCloud className="text-gray-600 mr-2" />
-              <p className="text-lg">Cloud: {weatherData.current.cloud}%</p>
+              <p className="text-xs sm:text-sm">
+                Cloud: {weatherData.current.cloud}%
+              </p>
             </div>
-            <div className="flex items-center bg-white bg-opacity-50 rounded-lg p-3 shadow-md">
+            <div className="flex items-center bg-gray-600 bg-opacity-50 rounded-lg p-3 shadow-md">
               <WiTime4 className="text-gray-600 mr-2" />
-              <p className="text-lg">
+              <p className="text-xs sm:text-sm">
                 Visibility: {weatherData.current.vis_km} km
               </p>
             </div>

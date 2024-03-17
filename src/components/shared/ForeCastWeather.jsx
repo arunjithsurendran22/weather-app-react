@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Slider from "react-slick";
@@ -86,13 +86,13 @@ const ForeCastWeather = () => {
   };
 
   return (
-    <div className="w-full md:w-5/12 mx-auto mt-10">
+    <div className="container w-full md:w-full lg:w-8/12 xl:w-6/12 mx-auto mt-10">
       {forecastData && (
         <Slider {...settings} className="gap-5">
           {forecastData.forecast.forecastday.map((day) => (
             <div
               key={day.date_epoch}
-              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center "
+              className="bg-customPurpleDark bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg p-4 shadow-md flex flex-col justify-center items-center text-center"
             >
               <h3 className="text-sm italic mb-2 text-gray-100">{day.date}</h3>
               <img
@@ -103,19 +103,30 @@ const ForeCastWeather = () => {
               <div className="space-y-2">
                 <div className="flex items-center text-white">
                   <SiCodeclimate className="mr-1 text-lg text-blue-500" />
-                  <p className="text-xs">{day.day.condition.text}</p>
+                  <p className="text-xs md:text-sm">
+                    {day.day.condition.text.length > 10
+                      ? `${day.day.condition.text.substring(0, 12)}...`
+                      : day.day.condition.text}
+                  </p>
                 </div>
+
                 <div className="flex items-center text-white">
                   <WiHumidity className="mr-1 text-lg text-green-500" />
-                  <p className="text-xs">Humidity: {day.day.avghumidity}</p>
+                  <p className="text-xs md:text-sm">
+                    Humidity: {day.day.avghumidity}
+                  </p>
                 </div>
                 <div className="flex items-center text-white">
                   <MdVisibilityOff className="mr-1 text-lg text-red-500" />
-                  <p className="text-xs">Visibility: {day.day.avgvis_km} km</p>
+                  <p className="text-xs md:text-sm">
+                    Visibility: {day.day.avgvis_km} km
+                  </p>
                 </div>
                 <div className="flex items-center text-white">
                   <LuThermometerSun className="mr-1 text-lg text-yellow-500" />
-                  <p className="text-xs">UV: {day.day.uv}</p>
+                  <p className="text-xs md:text-sm">
+                    UV: {day.day.uv}
+                  </p>
                 </div>
               </div>
             </div>

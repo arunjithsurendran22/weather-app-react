@@ -2,6 +2,7 @@
     "Sunny": "https://getwallpapers.com/wallpaper/full/8/4/d/924696-large-sunny-day-background-1920x1080-for-4k-monitor.jpg",
     "Partly cloudy":"https://wallpaperaccess.com/full/3397089.jpg ",
     "Partly Cloudy ":"https://wallpaperaccess.com/full/3397089.jpg",
+    "Patchy rain nearby":"https://img.resized.co/newstalk/eyJkYXRhIjoie1widXJsXCI6XCJodHRwczpcXFwvXFxcL21lZGlhLnJhZGlvY21zLm5ldFxcXC91cGxvYWRzXFxcLzIwMTlcXFwvMDVcXFwvMDcwNjI0MzBcXFwvaGFpbC0wNTNfOTA1Njc4ODQtMTAyNHg2ODMuanBnXCIsXCJ3aWR0aFwiOjEyMDAsXCJoZWlnaHRcIjo2MjMsXCJkZWZhdWx0XCI6XCJodHRwczpcXFwvXFxcL3d3dy5uZXdzdGFsay5jb21cXFwvaW1hZ2VzXFxcL2RlZmF1bHRfbm9faW1hZ2UucG5nP3Y9M1wiLFwib3B0aW9uc1wiOltdfSIsImhhc2giOiI5ZTgxNDZiODU5Njg5YTk3ZWQ3MTJlNmMxZWFiYWYxZTg5NDI4Y2ZiIn0=/hail-053-90567884-1024x683.jpg",
     "Clear":"http://farm3.staticflickr.com/2505/5702283339_644976b862_o_d.jpg",
     "Cloudy": "https://cdn.wallpapersafari.com/4/53/JCZUF5.jpg",
     "Overcast": "https://mobimg.b-cdn.net/v3/fetch/f5/f528b09dfbc73b011badda0dbf118829.jpeg?h=1600",
